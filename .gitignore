@@ -2,4 +2,4 @@
 .venv
 
 # db
-*.sqlit*
+*.sqlit3
