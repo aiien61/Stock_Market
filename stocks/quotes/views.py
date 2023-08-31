@@ -1,8 +1,11 @@
 import os
-import json
+
+from .models import Stock
+from .forms import StockForm
 
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -37,3 +40,15 @@ def home(request):
 
 def about(request):
     return render(request, "about.html", {})
+
+def add_stock(request):
+    if request.method == "POST":
+        form = StockForm(request.POST or None)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, ("Stock Has Been Added."))
+            return redirect('add_stock')
+    else:
+        ticker = Stock.objects.all()
+        return render(request, "add_stock.html", {'ticker': ticker})
