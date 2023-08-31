@@ -9,10 +9,11 @@ load_dotenv()
 
 ENDPOINT = 'https://api.iex.cloud/v1/data/core/quote'
 
+
 def home(request):
     if request.method == "POST":
         try:
-            symbol = request.POST.get("ticker")
+            symbol = request.POST["ticker"]
             parameters = {
                 'token': os.environ.get("API_KEY")
             }
