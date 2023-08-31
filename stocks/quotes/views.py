@@ -7,19 +7,31 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+ENDPOINT = 'https://api.iex.cloud/v1/data/core/quote'
 
 def home(request):
-    parameters = {
-        'token': os.environ.get("API_KEY")
-    }
-    response = requests.get(url='https://api.iex.cloud/v1/data/core/quote/aapl', params=parameters)
-    try:
-        response.raise_for_status()
-        data = response.json()
-    except Exception as e:
-        data = "Error..."
+    if request.method == "POST":
+        try:
+            symbol = request.POST.get("ticker")
+            parameters = {
+                'token': os.environ.get("API_KEY")
+            }
+            target_url = os.path.join(ENDPOINT, symbol)
+            response = requests.get(url=target_url, params=parameters)
+            
+            response.raise_for_status()
+            
+            # response structure often changes e.g. list or dict
+            data = response.json()[0]
+            
+            return render(request, 'index.html', {'data': data})
+        
+        except KeyError as e:
+            ticker_message = str(e)
+    else:
+        ticker_message = "Enter a Ticker Symbol Above..."
     
-    return render(request, 'index.html', {'data': data})
+    return render(request, 'index.html', {'ticker': ticker_message})
 
 
 def about(request):

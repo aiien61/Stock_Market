@@ -5,6 +5,20 @@
 <br/>
 <br/>
 
-{{ data }}
+{% if ticker %}
+  {{ ticker }}
+{% else %}
+  {% if not data %}
+    There was a problem with your ticker symbol, please try again
+  {% else %}
+    <h1>{{ data.companyName }}</h1><br>
+    Price: ${{ data.latestPrice }}<br>
+    Previous Close: {{ data.previousClose }}<br>
+    Market Cap: {{ data.marketCap }}<br>
+    YTD Change: {{ data.ytdChange }}<br>
+    52Wk High: {{ data.week52High }}<br>
+    52Wk Low: {{ data.week52Low }}<br>
+  {% endif %}
+{% endif %}
 
 {% endblock%}
