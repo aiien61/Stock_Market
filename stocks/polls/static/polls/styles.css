@@ -1,0 +1,16 @@
+.custom-brand {
+    color: aliceblue;
+}
+
+.navbar-brand.custom-brand:hover {
+    color: aliceblue;
+}
+
+.navbar-nav .nav-link {
+    color: grey;
+}
+
+#quote-search {
+    white-space: nowrap;
+    max-width: 150px;
+}
