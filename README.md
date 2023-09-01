@@ -54,16 +54,14 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 
 4. Create a pull request with a clear description of your changes.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Author
-
-Will Kuan
-
 ## Contact
 
 Feel free to reach out to me at aiien61will@gmail.com for any questions or feedback.
 
 Enjoy managing your stock portfolio with this web application!
+
+## Copyright and License
+
+Copyright (c) 2023, [Will Kuan](https://www.linkedin.com/in/will-kuan-0b073385/).
+
+This project is licensed under the [MIT License](LICENSE).
