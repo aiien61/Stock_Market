@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        {% if ticker %}
+        {% if tickers %}
             {% for item in output %}
             <tr>
                 <th scope="row">{{ item.companyName }}</th>
@@ -37,5 +37,7 @@
         {% endif %}
     </tbody>
 </table>
+
+{{ time }}
 
 {% endblock%}
